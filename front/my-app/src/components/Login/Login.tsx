@@ -55,12 +55,12 @@ function Login() {
 		isAuth,
 		statusDeleteProfile,
 	} = useSelector((state: any) => state.user);
-	const username = useInput('sergii', { isEmpty: true, minLength: 3 });
-	const email = useInput('s.v.oleksenko@gmail.com', {
+	const username = useInput('', { isEmpty: true, minLength: 3 });
+	const email = useInput('', {
 		isEmpty: true,
 		isEmail: true,
 	});
-	const password = useInput('123456', { isEmpty: true, minLength: 6 });
+	const password = useInput('', { isEmpty: true, minLength: 6 });
 	const { isErrorGetLoads } = useSelector((state: any) => state.load);
 	const { isErrorGetTrucks } = useSelector((state: any) => state.truck);
 	let userToken = localStorage.getItem('token');
