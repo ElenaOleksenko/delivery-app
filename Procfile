@@ -1,2 +1,1 @@
-web: npm start --prefix back
-client: npm start --prefix front/my-app
+web: (cd back && npm start)
