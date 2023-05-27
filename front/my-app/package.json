@@ -74,5 +74,8 @@
     "node": {
       "experimental-vm-modules": true
     }
+  },
+  "engines": {
+    "node": "14.x"
   }
 }
