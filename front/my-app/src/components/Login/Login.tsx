@@ -65,18 +65,6 @@ function Login() {
 	const { isErrorGetTrucks } = useSelector((state: any) => state.truck);
 	let userToken = localStorage.getItem('token');
 
-	//oleksenko.elenka@ukr.net
-	//helen
-
-	//elena.oleksenko12@gmail.com
-	//elena
-
-	//helen_wuds@ukr.net
-	//helen
-
-	//s.v.oleksenko@gmail.com
-	//sergii
-
 	useEffect(() => {
 		if (statusPasswordReset === 200) {
 			dispatch(deleteStatusReset(0));
