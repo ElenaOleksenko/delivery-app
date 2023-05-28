@@ -22,7 +22,7 @@ app.use(express.json());
 app.use(morgan('tiny'));
 app.use(cors());
 
-app.use(express.static(path.join(__dirname, '../front/my-app/public/index.html')));
+app.use(express.static(path.join(__dirname, '../front/my-app/public')));
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '../front/my-app/public/index.html'));
 });
