@@ -27,8 +27,7 @@ function App() {
 			<Header />
 			{isAuth && <SideBar />}
 			<Routes>
-				<Route path='/' />
-				<Route index element={<Login />} />
+				<Route path='/' element={<Login />} />
 				<Route path='registration' element={<Registration />} />
 				<Route path='error' element={<BadRequestError />} />
 				<Route path='forgot-password' element={<ForgotPassword />} />
