@@ -7,6 +7,7 @@ const path = require('path');
 const app = express();
 const mongoose = require('mongoose');
 
+const PORT = 8080;
 require('dotenv').config();
 
 // mongoose.connect('mongodb://localhost:27017/myapp');
@@ -32,8 +33,8 @@ app.use('/api/loads', authMiddleware, loadRouter);
 
 const start = async () => {
   try {
-    app.listen(process.env.PORT || 8080, () => {
-      console.log(`Server started on ${process.env.PORT || 8080}`);
+    app.listen(PORT, () => {
+      console.log(`Server started on ${PORT}`);
     });
   } catch (err) {
     console.error(`Error on server startup: ${err.message}`);
