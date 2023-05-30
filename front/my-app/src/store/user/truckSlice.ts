@@ -61,15 +61,12 @@ export const getActiveLoadsForDriver = createAsyncThunk(
 	async (_, { rejectWithValue, dispatch }) => {
 		try {
 			let locAppState = `Bearer ${loadFromLocalStorage().user.jwt_token}`;
-			const response = await axios.get(
-				'http://127.0.0.1:8080/api/loads/active',
-				{
-					headers: {
-						Authorization: locAppState,
-						'Content-Type': 'application/json',
-					},
-				}
-			);
+			const response = await axios.get(`${baseUrl}/api/loads/active`, {
+				headers: {
+					Authorization: locAppState,
+					'Content-Type': 'application/json',
+				},
+			});
 			if (response.statusText !== 'OK') {
 				throw new Error('There was a problem with your request');
 			}
