@@ -85,7 +85,7 @@ const deleteImageProfile = async (req, res, next) => {
   try {
     const { userId } = req.user;
     const user = await User.findByIdAndUpdate({ _id: req.user.userId });
-    const uploadPath = path.join(__dirname, '../', 'public', 'photos', userId, user.userPhoto.fileName);
+    const uploadPath = path.join(__dirname, '../', 'publicPhotos', 'photos', userId, user.userPhoto.fileName);
 
     fs.unlink(uploadPath, async (err) => {
       if (err) {
