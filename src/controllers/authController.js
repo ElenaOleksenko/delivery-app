@@ -66,6 +66,7 @@ const loginUser = async (req, res, next) => {
     }
     return res.status(403).json({ message: 'Not authorized' });
   } catch (err) {
+    console.log(err.message);
     res.status(500).json({
       message: 'Server error',
     });
