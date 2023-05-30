@@ -26,9 +26,9 @@ app.use(cors());
 // app.get('*', (req, res) => {
 //   res.sendFile(path.join(__dirname, '../front/my-app/public/index.html'));
 // });
-app.use(express.static(path.resolve(__dirname, '../front/my-app/build')));
+app.use(express.static(path.resolve(__dirname, '../front/my-app/public')));
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../front/my-app/build/index.html'));
+  res.sendFile(path.join(__dirname, '../front/my-app/public/index.html'));
 });
 app.use('/public/photos', express.static(path.resolve(__dirname, 'public', 'photos')));
 app.use('/api/auth', authRouter);
