@@ -59,6 +59,8 @@
     ]
   },
   "devDependencies": {
+    "@types/babel__generator": "^7.6.4",
+    "@types/ws": "^8.5.4",
     "@typescript-eslint/eslint-plugin": "^5.53.0",
     "eslint": "^8.35.0",
     "eslint-config-prettier": "^8.8.0",
@@ -75,8 +77,6 @@
     "node": {
       "experimental-vm-modules": true
     }
-  },
-  "engines": {
-    "node": "14.x"
-  }
+  }б
+ 
 }
