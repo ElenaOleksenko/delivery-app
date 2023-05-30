@@ -24,7 +24,7 @@
     "browser": true,
     "es2021": true
     },
-    "extends": ["react-app", "prettier"],
+    "extends": ["react-app", "prettier/prettier"],
     "parserOptions": {
     "ecmaFeatures": {
     "jsx": true
