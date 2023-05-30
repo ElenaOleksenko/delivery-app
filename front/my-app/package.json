@@ -77,6 +77,8 @@
     "node": {
       "experimental-vm-modules": true
     }
-  }б
- 
+  },
+  "engines": {
+    "node": "16.x"
+  }
 }
