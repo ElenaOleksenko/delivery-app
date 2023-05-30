@@ -112,7 +112,7 @@ export const login = createAsyncThunk(
 	async (user: User, { rejectWithValue, dispatch }) => {
 		try {
 			const response = await axios.post(
-				'http://127.0.0.1:8080/api/auth/login',
+				'https://delivery-app-oleksenko.herokuapp.com/api/auth/login',
 				user,
 				{
 					headers: {
