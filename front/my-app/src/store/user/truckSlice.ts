@@ -6,6 +6,7 @@ import {
 	TruckUpdate,
 } from '../../components/Trucks/Model';
 import { loadFromLocalStorage } from '../../helpers';
+import { baseUrl } from '../../constants';
 
 interface TruckState {
 	trucks: TruckCardModel[];
@@ -38,7 +39,7 @@ export const getTrucks = createAsyncThunk(
 	async (_, { rejectWithValue, dispatch }) => {
 		try {
 			let locAppState = `Bearer ${loadFromLocalStorage().user.jwt_token}`;
-			const response = await axios.get('http://127.0.0.1:8080/api/trucks', {
+			const response = await axios.get(`${baseUrl}/api/trucks`, {
 				headers: {
 					Authorization: locAppState,
 					'Content-Type': 'application/json',
@@ -85,16 +86,12 @@ export const addNewTruck = createAsyncThunk(
 	async (currTruck: Truck, { rejectWithValue, dispatch }) => {
 		try {
 			let locAppState = `Bearer ${loadFromLocalStorage().user.jwt_token}`;
-			const response = await axios.post(
-				'http://127.0.0.1:8080/api/trucks',
-				currTruck,
-				{
-					headers: {
-						Authorization: locAppState,
-						'Content-Type': 'application/json',
-					},
-				}
-			);
+			const response = await axios.post(`${baseUrl}/api/trucks`, currTruck, {
+				headers: {
+					Authorization: locAppState,
+					'Content-Type': 'application/json',
+				},
+			});
 			if (response.statusText !== 'OK') {
 				throw new Error('There was a problem with your request');
 			}
@@ -115,7 +112,7 @@ export const updateTruck = createAsyncThunk(
 				type: currTruck.type,
 			};
 			const response = await axios.put(
-				`http://127.0.0.1:8080/api/trucks/${currTruck._id}`,
+				`${baseUrl}/api/trucks/${currTruck._id}`,
 				truckUpdate,
 				{
 					headers: {
@@ -140,15 +137,12 @@ export const deleteTruck = createAsyncThunk(
 	async (id: string, { rejectWithValue, fulfillWithValue, dispatch }) => {
 		try {
 			let locAppState = `Bearer ${loadFromLocalStorage().user.jwt_token}`;
-			const response = await axios.delete(
-				`http://127.0.0.1:8080/api/trucks/${id}`,
-				{
-					headers: {
-						Authorization: locAppState,
-						'Content-Type': 'application/json',
-					},
-				}
-			);
+			const response = await axios.delete(`${baseUrl}/api/trucks/${id}`, {
+				headers: {
+					Authorization: locAppState,
+					'Content-Type': 'application/json',
+				},
+			});
 			if (response.status === 200) {
 				const truck = await response.data.truck;
 				return fulfillWithValue(truck);
@@ -183,7 +177,7 @@ export const assignTruck = createAsyncThunk(
 		try {
 			let locAppState = `Bearer ${loadFromLocalStorage().user.jwt_token}`;
 			const response = await axios.post(
-				`http://127.0.0.1:8080/api/trucks/${id}/assign`,
+				`${baseUrl}/api/trucks/${id}/assign`,
 				{},
 				{
 					headers: {
@@ -228,7 +222,7 @@ export const updateIfReadLoad = createAsyncThunk(
 		try {
 			let locAppState = `Bearer ${loadFromLocalStorage().user.jwt_token}`;
 			const response = await axios.patch(
-				`http://127.0.0.1:8080/api/loads/active/`,
+				`${baseUrl}/api/loads/active/`,
 				{},
 				{
 					headers: {
@@ -260,7 +254,7 @@ export const changeLoadState = createAsyncThunk(
 		try {
 			let locAppState = `Bearer ${loadFromLocalStorage().user.jwt_token}`;
 			const response = await axios.patch(
-				`http://127.0.0.1:8080/api/loads/active/state`,
+				`${baseUrl}/api/loads/active/state`,
 				{},
 				{
 					headers: {

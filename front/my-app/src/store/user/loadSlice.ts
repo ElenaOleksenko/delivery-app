@@ -6,6 +6,7 @@ import {
 	LoadCardModel,
 } from '../../components/Trucks/Model';
 import { loadFromLocalStorage } from '../../helpers';
+import { baseUrl } from '../../constants';
 
 const archiveLoads: LoadCardModel[] = [];
 
@@ -32,7 +33,7 @@ export const getLoads = createAsyncThunk(
 	async (_, { rejectWithValue, dispatch }) => {
 		try {
 			let locAppState = `Bearer ${loadFromLocalStorage().user.jwt_token}`;
-			const response = await axios.get('http://127.0.0.1:8080/api/loads', {
+			const response = await axios.get(`${baseUrl}/api/loads`, {
 				headers: {
 					Authorization: locAppState,
 					'Content-Type': 'application/json',
@@ -54,15 +55,12 @@ export const getActiveLoadShipper = createAsyncThunk(
 	async (_, { rejectWithValue, fulfillWithValue, dispatch }) => {
 		try {
 			let locAppState = `Bearer ${loadFromLocalStorage().user.jwt_token}`;
-			const response = await axios.get(
-				'http://127.0.0.1:8080/api/loads/shipping_info',
-				{
-					headers: {
-						Authorization: locAppState,
-						'Content-Type': 'application/json',
-					},
-				}
-			);
+			const response = await axios.get(`${baseUrl}/api/loads/shipping_info`, {
+				headers: {
+					Authorization: locAppState,
+					'Content-Type': 'application/json',
+				},
+			});
 			if (response.statusText !== 'OK') {
 				throw new Error('There was a problem with your request');
 			}
@@ -80,16 +78,12 @@ export const addNewLoad = createAsyncThunk(
 	async (currLoad: CurLoad, { rejectWithValue, dispatch }) => {
 		try {
 			let locAppState = `Bearer ${loadFromLocalStorage().user.jwt_token}`;
-			const response = await axios.post(
-				'http://127.0.0.1:8080/api/loads',
-				currLoad,
-				{
-					headers: {
-						Authorization: locAppState,
-						'Content-Type': 'application/json',
-					},
-				}
-			);
+			const response = await axios.post(`${baseUrl}/api/loads`, currLoad, {
+				headers: {
+					Authorization: locAppState,
+					'Content-Type': 'application/json',
+				},
+			});
 			if (response.statusText !== 'OK') {
 				throw new Error('There was a problem with your request');
 			}
@@ -106,15 +100,12 @@ export const deleteLoad = createAsyncThunk(
 	async (id: string, { rejectWithValue, fulfillWithValue, dispatch }) => {
 		try {
 			let locAppState = `Bearer ${loadFromLocalStorage().user.jwt_token}`;
-			const response = await axios.delete(
-				`http://127.0.0.1:8080/api/loads/${id}`,
-				{
-					headers: {
-						Authorization: locAppState,
-						'Content-Type': 'application/json',
-					},
-				}
-			);
+			const response = await axios.delete(`${baseUrl}/api/loads/${id}`, {
+				headers: {
+					Authorization: locAppState,
+					'Content-Type': 'application/json',
+				},
+			});
 			if (response.status === 200) {
 				const load = await response.data.deletedLoad;
 				return fulfillWithValue(load);
@@ -152,7 +143,7 @@ export const updateLoad = createAsyncThunk(
 				},
 			};
 			const response = await axios.put(
-				`http://127.0.0.1:8080/api/loads/${currLoad._id}`,
+				`${baseUrl}/api/loads/${currLoad._id}`,
 				loadUpdate,
 				{
 					headers: {
@@ -195,7 +186,7 @@ export const searchTruckLoad = createAsyncThunk(
 		try {
 			let locAppState = `Bearer ${loadFromLocalStorage().user.jwt_token}`;
 			const response = await axios.post(
-				`http://127.0.0.1:8080/api/loads/${id}/post`,
+				`${baseUrl}/api/loads/${id}/post`,
 				{},
 				{
 					headers: {
@@ -238,7 +229,7 @@ export const updateIfReadLoadByShipper = createAsyncThunk(
 		try {
 			let locAppState = `Bearer ${loadFromLocalStorage().user.jwt_token}`;
 			const response = await axios.patch(
-				`http://127.0.0.1:8080/api/loads/active/`,
+				`${baseUrl}/api/loads/active/`,
 				{},
 				{
 					headers: {
@@ -270,7 +261,7 @@ export const archiveLoad = createAsyncThunk(
 		try {
 			let locAppState = `Bearer ${loadFromLocalStorage().user.jwt_token}`;
 			const response = await axios.put(
-				`http://127.0.0.1:8080/api/loads/${id}/archive/`,
+				`${baseUrl}/api/loads/${id}/archive/`,
 				{},
 				{
 					headers: {
@@ -314,15 +305,12 @@ export const getArchiveLoad = createAsyncThunk(
 	async (_, { rejectWithValue, fulfillWithValue, dispatch }) => {
 		try {
 			let locAppState = `Bearer ${loadFromLocalStorage().user.jwt_token}`;
-			const response = await axios.get(
-				`http://127.0.0.1:8080/api/loads/archive/`,
-				{
-					headers: {
-						Authorization: locAppState,
-						'Content-Type': 'application/json',
-					},
-				}
-			);
+			const response = await axios.get(`${baseUrl}/api/loads/archive/`, {
+				headers: {
+					Authorization: locAppState,
+					'Content-Type': 'application/json',
+				},
+			});
 			const loads = await response.data.loads;
 			return fulfillWithValue(loads);
 		} catch (error: any) {

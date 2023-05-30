@@ -1,6 +1,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 import { loadFromLocalStorage } from '../../helpers';
+import { baseUrl } from '../../constants';
 
 interface UserState {
 	isAuth: boolean;
@@ -70,7 +71,7 @@ export const registration = createAsyncThunk(
 	) => {
 		try {
 			const response = await axios.post(
-				'http://127.0.0.1:8080/api/auth/register',
+				`${baseUrl}/api/auth/register`,
 				credentials,
 				{
 					headers: {
@@ -111,15 +112,11 @@ export const login = createAsyncThunk(
 	'user/login',
 	async (user: User, { rejectWithValue, dispatch }) => {
 		try {
-			const response = await axios.post(
-				'https://delivery-app-oleksenko.herokuapp.com/api/auth/login',
-				user,
-				{
-					headers: {
-						'Content-Type': 'application/json',
-					},
-				}
-			);
+			const response = await axios.post(`${baseUrl}/api/auth/login`, user, {
+				headers: {
+					'Content-Type': 'application/json',
+				},
+			});
 			if (response.statusText !== 'OK') {
 				throw new Error('There was a problem with your request');
 			}
@@ -137,7 +134,7 @@ export const resetPassword = createAsyncThunk(
 	async (email: object, { rejectWithValue, dispatch }) => {
 		try {
 			const response = await axios.post(
-				`http://127.0.0.1:8080/api/auth/password-reset`,
+				`${baseUrl}/api/auth/password-reset`,
 				email,
 				{
 					headers: {
@@ -161,7 +158,7 @@ export const restorePassword = createAsyncThunk(
 	async (data: Data, { rejectWithValue }) => {
 		try {
 			const response = await axios.patch(
-				`http://127.0.0.1:8080/api/auth/password-change`,
+				`${baseUrl}/api/auth/password-change`,
 				data,
 				{
 					headers: {
@@ -186,7 +183,7 @@ export const uploadUserPhoto = createAsyncThunk(
 		try {
 			let locAppState = `Bearer ${loadFromLocalStorage().user.jwt_token}`;
 			const response = await axios.post(
-				`http://127.0.0.1:8080/api/users/me/profile-picture`,
+				`${baseUrl}/api/users/me/profile-picture`,
 				formData,
 				{
 					headers: {
@@ -212,7 +209,7 @@ export const updateUserCredentials = createAsyncThunk(
 		try {
 			let locAppState = `Bearer ${loadFromLocalStorage().user.jwt_token}`;
 			const response = await axios.put(
-				'http://127.0.0.1:8080/api/users/me/update-user',
+				`${baseUrl}/api/users/me/update-user`,
 				credentials,
 				{
 					headers: {
@@ -242,7 +239,7 @@ export const updateUserPassword = createAsyncThunk(
 		try {
 			let locAppState = `Bearer ${loadFromLocalStorage().user.jwt_token}`;
 			const response = await axios.patch(
-				'http://127.0.0.1:8080/api/users/me/password',
+				`${baseUrl}/api/users/me/password`,
 				credentials,
 				{
 					headers: {
@@ -273,7 +270,7 @@ export const deleteUserPhoto = createAsyncThunk(
 		try {
 			let locAppState = `Bearer ${loadFromLocalStorage().user.jwt_token}`;
 			const response = await axios.delete(
-				'http://127.0.0.1:8080/api/users/me/delete-photo',
+				`${baseUrl}/api/users/me/delete-photo`,
 				{
 					headers: {
 						Authorization: locAppState,
@@ -297,15 +294,12 @@ export const logout = createAsyncThunk(
 	async (_, { rejectWithValue, dispatch }) => {
 		try {
 			let locAppState = `Bearer ${loadFromLocalStorage().user.jwt_token}`;
-			const response = await axios.delete(
-				'http://127.0.0.1:8080/api/users/me/logout',
-				{
-					headers: {
-						Authorization: locAppState,
-						'Content-Type': 'application/json',
-					},
-				}
-			);
+			const response = await axios.delete(`${baseUrl}/api/users/me/logout`, {
+				headers: {
+					Authorization: locAppState,
+					'Content-Type': 'application/json',
+				},
+			});
 			if (response.statusText !== 'OK') {
 				throw new Error('There was a problem with your request');
 			}
@@ -323,7 +317,7 @@ export const deleteProfile = createAsyncThunk(
 		try {
 			let locAppState = `Bearer ${loadFromLocalStorage().user.jwt_token}`;
 			const response = await axios.delete(
-				'http://127.0.0.1:8080/api/users/me/delete-user',
+				`${baseUrl}/api/users/me/delete-user`,
 				{
 					headers: {
 						Authorization: locAppState,
