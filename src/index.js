@@ -23,6 +23,9 @@ app.use(morgan('tiny'));
 app.use(cors());
 
 app.use(express.static(path.join(__dirname, '../public')));
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../public', 'index.html'));
+});
 app.use('/public/photos', express.static(path.resolve(__dirname, 'public', 'photos')));
 app.use('/api/auth', authRouter);
 app.use('/api/users/me', authMiddleware, userRouter);
