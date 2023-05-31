@@ -23,8 +23,7 @@ app.use(morgan('tiny'));
 app.use(cors());
 
 app.use(express.static(path.join(__dirname, '../public')));
-app.use(express.static('public/photos'));
-// app.use('/public/photos', express.static('public/photos'));
+app.use('/public/photos', express.static('public/photos'));
 app.use('/api/auth', authRouter);
 app.use('/api/users/me', authMiddleware, userRouter);
 app.use('/api/trucks', authMiddleware, truckRouter);

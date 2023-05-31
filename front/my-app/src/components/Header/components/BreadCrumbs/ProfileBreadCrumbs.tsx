@@ -16,7 +16,7 @@ import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
 import Logout from '@mui/icons-material/Logout';
 import { useTranslation } from 'react-i18next';
-import { logoutText, profileText } from '../../../../constants';
+import { baseUrl, logoutText, profileText } from '../../../../constants';
 
 const ProfileBreadCrumbs = () => {
 	const { username, userPhoto } = useSelector((state: any) => state.user);
@@ -65,7 +65,7 @@ const ProfileBreadCrumbs = () => {
 									height: 62,
 									bgcolor: '#bbcfe7',
 								}}
-								src={`http://localhost:8080/public${userPhoto.filePath}`}
+								src={`${baseUrl}/public${userPhoto.filePath}`}
 							>
 								{firstLetterUsername}
 							</Avatar>

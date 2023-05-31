@@ -16,6 +16,7 @@ import {
 import { logoutLoadsFromLocStorage } from '../../store/user/loadSlice';
 import { logoutTrucksFromLocStorage } from '../../store/user/truckSlice';
 import {
+	baseUrl,
 	changePassword,
 	deleteProfileText,
 	editPersonalData,
@@ -85,7 +86,7 @@ const ProfilePage = () => {
 							<div className='avatar-container'>
 								<Avatar
 									sx={{ width: 82, height: 82, background: '#bbcfe7' }}
-									src={`http://localhost:8080/public${userPhoto.filePath}`}
+									src={`${baseUrl}/public${userPhoto.filePath}`}
 								>
 									<ImageIcon sx={{ fontSize: 35 }} />
 								</Avatar>
