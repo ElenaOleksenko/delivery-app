@@ -38,6 +38,7 @@ function RestorePassword() {
 	);
 	const { errorMessage } = useSelector((state: any) => state.user);
 	const { id, resetToken } = useParams();
+	console.log(id, resetToken);
 
 	const togglePassInput = (e: any) => {
 		if (type === 'password') {
