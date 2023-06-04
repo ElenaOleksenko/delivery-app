@@ -1,4 +1,4 @@
-const baseUrl = 'https://delivery-app-oleksenko.herokuapp.com';
+const baseUrl = 'http://localhost:3000';
 const nodemailer = require('nodemailer');
 
 const sendEmail = async (email, subject, token, id, text) => {

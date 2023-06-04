@@ -4,7 +4,7 @@ import {
 	faBoxArchive,
 } from '@fortawesome/free-solid-svg-icons';
 
-export const baseUrl = 'https://delivery-app-oleksenko.herokuapp.com';
+export const baseUrl = 'http://localhost:8080';
 
 export const registrationEmailField: string = 'Email';
 
