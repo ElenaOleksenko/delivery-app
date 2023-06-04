@@ -1,7 +1,6 @@
 {
   "name": "hw3",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "start": "node src index.js",
