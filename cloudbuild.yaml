@@ -5,6 +5,10 @@ substitutions:
   _PROJECT_ID: delivery-app-388907
   _FUNCTION_NAME: delivery-app
   _REGION: europe-west2
+  _DB_HOST: 'mongodb+srv://OlenaOleksenko:5227337109531N@olenaoleksenkomongodbcl.jwck9ba.mongodb.net/users?retryWrites=true&w=majority'
+  _secret_jwt_key: 1000
+  _PORT: 8080
+
 
 steps:
   - name: 'gcr.io/cloud-builders/gcloud'
@@ -19,4 +23,5 @@ steps:
           --trigger-http \
           --region $_REGION \
           --project $_PROJECT_ID
+          --set-env-vars=DB_HOST=${_DB_HOST},secret_jwt_key=${_secret_jwt_key},PORT=${_PORT}
 
