@@ -19,4 +19,5 @@ steps:
           --trigger-http \
           --region $_REGION \
           --project $_PROJECT_ID
+          --entry-point '/' \
 
