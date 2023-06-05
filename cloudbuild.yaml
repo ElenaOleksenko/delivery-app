@@ -7,6 +7,7 @@ substitutions:
   _REGION: europe-west2
   _DB_HOST: 'mongodb+srv://OlenaOleksenko:5227337109531N@olenaoleksenkomongodbcl.jwck9ba.mongodb.net/users?retryWrites=true&w=majority'
   _SECRET_JWT_KEY: '1000'
+  _PORT: 8080
 
 steps:
   - name: 'gcr.io/cloud-builders/gcloud'
@@ -21,5 +22,5 @@ steps:
           --trigger-http \
           --region $_REGION \
           --project $_PROJECT_ID
-          --set-env-vars=DB_HOST=${_DB_HOST},SECRET_JWT_KEY=${_SECRET_JWT_KEY}
+          --set-env-vars=DB_HOST=${_DB_HOST},SECRET_JWT_KEY=${_SECRET_JWT_KEY},PORT=${_PORT}
 
