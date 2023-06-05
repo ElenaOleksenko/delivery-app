@@ -14,8 +14,9 @@ steps:
       - |
         gcloud functions deploy $_FUNCTION_NAME \
           --runtime nodejs16 \
-          --source . \
+          --source src \
           --entry-point YOUR_ENTRY_POINT \
           --trigger-http \
           --region $_REGION \
           --project $_PROJECT_ID
+
