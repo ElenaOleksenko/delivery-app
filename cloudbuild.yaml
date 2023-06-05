@@ -6,7 +6,7 @@ substitutions:
   _FUNCTION_NAME: delivery-app
   _REGION: europe-west2
   _DB_HOST: 'mongodb+srv://OlenaOleksenko:5227337109531N@olenaoleksenkomongodbcl.jwck9ba.mongodb.net/users?retryWrites=true&w=majority'
-  _secret_jwt_key: 1000
+  _secret_jwt_key: '1000'
   _PORT: 8080
 
 
