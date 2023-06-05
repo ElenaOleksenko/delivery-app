@@ -8,8 +8,8 @@ substitutions:
 
 steps:
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['build', '-t', 'gcr.io/$PROJECT_ID/$FUNCTION_NAME', '.']
+    args: ['build', '-t', 'gcr.io/$PROJECT_ID/$_FUNCTION_NAME', '.']
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['push', 'gcr.io/$PROJECT_ID/$FUNCTION_NAME']
+    args: ['push', 'gcr.io/$PROJECT_ID/$_FUNCTION_NAME']
   - name: 'gcr.io/cloud-builders/gcloud'
-    args: ['functions', 'deploy', '$FUNCTION_NAME', '--image', 'gcr.io/$PROJECT_ID/$FUNCTION_NAME', '--region', '$REGION', '--trigger-http']
+    args: ['functions', 'deploy', '$_FUNCTION_NAME', '--image', 'gcr.io/$PROJECT_ID/$_FUNCTION_NAME', '--region', '$REGION', '--trigger-http']
