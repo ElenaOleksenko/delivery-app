@@ -5,7 +5,6 @@ substitutions:
   _PROJECT_ID: delivery-app-388907
   _FUNCTION_NAME: delivery-app
   _REGION: europe-west2
-  _ENTRY_POINT: delivery-app
 
 steps:
   - name: 'gcr.io/cloud-builders/gcloud'
@@ -20,5 +19,4 @@ steps:
           --trigger-http \
           --region $_REGION \
           --project $_PROJECT_ID
-          --entry-point=$_ENTRY_POINT
 
