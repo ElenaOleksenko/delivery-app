@@ -2,7 +2,7 @@
 #
 
 substitutions:
-  _PROJECT_ID: elivery-app-388907
+  _PROJECT_ID: delivery-app-388907
   _FUNCTION_NAME: delivery-app
   _REGION: europe-west2
 
