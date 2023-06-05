@@ -8,15 +8,15 @@ substitutions:
 
 steps:
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['build', '-t', 'gcr.io/$_PROJECT_ID/$_FUNCTION_NAME', '.']
+    args: ['build', '-t', 'gcr.io/$PROJECT_ID/$_FUNCTION_NAME', '.']
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['push', 'gcr.io/$_PROJECT_ID/$_FUNCTION_NAME']
+    args: ['push', 'gcr.io/$PROJECT_ID/$_FUNCTION_NAME']
   - name: 'gcr.io/cloud-builders/gcloud'
     entrypoint: 'bash'
     args:
       - '-c'
       - |
         gcloud functions deploy $_FUNCTION_NAME \
-          --image gcr.io/$_PROJECT_ID/$_FUNCTION_NAME \
+          --source gcr.io/$PROJECT_ID/$_FUNCTION_NAME \
           --region $_REGION \
           --trigger-http
